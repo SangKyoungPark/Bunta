@@ -289,6 +289,101 @@ ul { list-style: none; }
   margin-top: 8px;
 }
 
+/* ========== KEY NUMBERS ========== */
+.keynums {
+  background: var(--dark);
+  padding: 100px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.keynums::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,54,46,0.12), transparent 70%);
+}
+.keynums::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  right: -5%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,168,124,0.08), transparent 70%);
+}
+.keynums-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.keynum-item {
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  transition: all 0.4s var(--transition);
+  position: relative;
+}
+.keynum-item:hover {
+  border-color: rgba(200,54,46,0.4);
+  background: rgba(200,54,46,0.06);
+  transform: translateY(-6px);
+}
+.keynum-value {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 5vw, 72px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.keynum-value span {
+  color: var(--primary);
+}
+.keynum-sub {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.keynum-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.7;
+}
+.keynum-divider {
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(255,255,255,0.06);
+}
+.keynum-item:last-child .keynum-divider { display: none; }
+
+@media (max-width: 1024px) {
+  .keynums-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .keynum-item:nth-child(2) .keynum-divider { display: none; }
+}
+@media (max-width: 768px) {
+  .keynums { padding: 60px 20px; }
+  .keynums-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .keynum-item { padding: 28px 16px; }
+  .keynum-divider { display: none; }
+}
+
 /* ========== MENU BENTO ========== */
 .menu { background: #fff; }
 .menu-header {
@@ -797,18 +892,48 @@ ul { list-style: none; }
       </p>
       <div class="story-stats">
         <div>
-          <div class="stat-number">50+</div>
-          <div class="stat-label">전국 매장 수</div>
+          <div class="stat-number">10Y</div>
+          <div class="stat-label">정통의 노하우</div>
         </div>
         <div>
-          <div class="stat-number">12h</div>
-          <div class="stat-label">매일 우려낸 육수</div>
+          <div class="stat-number">3.3.9</div>
+          <div class="stat-label">비법 레시피</div>
         </div>
         <div>
-          <div class="stat-number">2024</div>
-          <div class="stat-label">베스트브랜드 대상</div>
+          <div class="stat-number">37%</div>
+          <div class="stat-label">매출 성장률</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== KEY NUMBERS ========== -->
+<section class="keynums">
+  <div class="keynums-grid">
+    <div class="keynum-item reveal">
+      <div class="keynum-value">10<span>Y</span></div>
+      <div class="keynum-sub">Heritage</div>
+      <div class="keynum-desc">10년간 쌓아온 정통<br>베트남 쌀국수의 노하우</div>
+      <div class="keynum-divider"></div>
+    </div>
+    <div class="keynum-item reveal">
+      <div class="keynum-value">3.3.<span>9</span></div>
+      <div class="keynum-sub">비법</div>
+      <div class="keynum-desc">3가지 육수, 3가지 향신료<br>9시간 정성의 비법 레시피</div>
+      <div class="keynum-divider"></div>
+    </div>
+    <div class="keynum-item reveal">
+      <div class="keynum-value">6<span>Day</span></div>
+      <div class="keynum-sub">Freshness</div>
+      <div class="keynum-desc">주 6일 매장 직접 조리<br>당일 신선한 재료만 사용</div>
+      <div class="keynum-divider"></div>
+    </div>
+    <div class="keynum-item reveal">
+      <div class="keynum-value">37<span>%</span></div>
+      <div class="keynum-sub">Growth</div>
+      <div class="keynum-desc">전년 대비 매출 성장률<br>검증된 프랜차이즈 경쟁력</div>
+      <div class="keynum-divider"></div>
     </div>
   </div>
 </section>
