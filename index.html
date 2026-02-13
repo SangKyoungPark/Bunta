@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>분타 BUNTA | 베트남 3대 쌀국수 전문점</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+/* ========== RESET & BASE ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #1a1a1a;
+  background: #fff;
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; }
+
+/* ========== CSS VARIABLES ========== */
+:root {
+  --primary: #C8362E;
+  --primary-dark: #9B2620;
+  --accent: #E8A87C;
+  --warm: #FFF8F0;
+  --dark: #1a1a1a;
+  --gray: #6b6b6b;
+  --light-gray: #f5f5f5;
+  --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ========== NAVIGATION ========== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.4s var(--transition);
+}
+.nav.scrolled {
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(20px);
+  padding: 14px 60px;
+  box-shadow: 0 2px 40px rgba(0,0,0,0.06);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 3px;
+  transition: color 0.4s;
+}
+.nav.scrolled .nav-logo { color: var(--primary); }
+.nav-links {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 1px;
+  position: relative;
+  transition: color 0.3s;
+}
+.nav.scrolled .nav-links a { color: var(--dark); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s var(--transition);
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover { color: var(--primary); }
+
+/* Mobile menu */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  transition: all 0.3s;
+}
+.nav.scrolled .nav-toggle span { background: var(--dark); }
+
+/* ========== HERO ========== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1a0a05 0%, #3d1008 30%, #5c1a0f 60%, #2a0e08 100%);
+  z-index: 0;
+}
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900"><defs><radialGradient id="g" cx="50%" cy="40%"><stop offset="0%" stop-color="%23C8362E" stop-opacity="0.15"/><stop offset="100%" stop-color="transparent"/></radialGradient></defs><rect fill="url(%23g)" width="1440" height="900"/></svg>');
+  background-size: cover;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 8px 24px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 50px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  animation: fadeUp 1s 0.2s both;
+}
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: 700;
+  letter-spacing: 8px;
+  line-height: 1.1;
+  margin-bottom: 10px;
+  animation: fadeUp 1s 0.4s both;
+}
+.hero-subtitle {
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 6px;
+  margin-bottom: 50px;
+  animation: fadeUp 1s 0.6s both;
+}
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 40px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  transition: all 0.4s var(--transition);
+  animation: fadeUp 1s 0.8s both;
+}
+.hero-cta:hover {
+  background: #fff;
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.hero-cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s;
+}
+.hero-cta:hover svg { transform: translateX(4px); }
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.5);
+  font-size: 11px;
+  letter-spacing: 2px;
+  animation: fadeUp 1s 1s both;
+}
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+  animation: scrollLine 2s infinite;
+}
+
+/* ========== SECTION COMMON ========== */
+.section {
+  padding: 120px 60px;
+}
+.section-label {
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+.section-desc {
+  font-size: 16px;
+  color: var(--gray);
+  max-width: 560px;
+  line-height: 1.8;
+}
+
+/* ========== BRAND STORY ========== */
+.story { background: var(--warm); }
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.story-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #d4a574 0%, #8b5e3c 50%, #5c3520 100%);
+}
+.story-visual-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent 60%);
+}
+.story-visual-text {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-style: italic;
+  line-height: 1.4;
+}
+.story-content { padding: 20px 0; }
+.story-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+  padding-top: 50px;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--gray);
+  margin-top: 8px;
+}
+
+/* ========== MENU BENTO ========== */
+.menu { background: #fff; }
+.menu-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+.menu-header .section-desc { margin: 0 auto; }
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 300px);
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.bento-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.5s var(--transition);
+}
+.bento-item:hover { transform: scale(1.02); }
+.bento-item:nth-child(1) { grid-column: span 2; }
+.bento-item:nth-child(4) { grid-column: span 2; }
+.bento-bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.6s var(--transition);
+}
+.bento-item:hover .bento-bg { transform: scale(1.08); }
+.bento-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 50%, transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+  color: #fff;
+}
+.bento-name {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.bento-desc-text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+}
+.bento-tag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 6px 16px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* menu color blocks */
+.bento-item:nth-child(1) .bento-bg {
+  background: linear-gradient(135deg, #d4a574, #8b5e3c);
+}
+.bento-item:nth-child(2) .bento-bg {
+  background: linear-gradient(135deg, #e8c9a0, #c49a6c);
+}
+.bento-item:nth-child(3) .bento-bg {
+  background: linear-gradient(135deg, #5c8a4d, #3d6b30);
+}
+.bento-item:nth-child(4) .bento-bg {
+  background: linear-gradient(135deg, #c0392b, #962d22);
+}
+.bento-item:nth-child(5) .bento-bg {
+  background: linear-gradient(135deg, #f0d9b5, #d4a574);
+}
+
+/* ========== PHILOSOPHY ========== */
+.philosophy {
+  background: var(--dark);
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.philosophy::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,54,46,0.15), transparent 70%);
+}
+.philosophy .section-title { color: #fff; }
+.philosophy .section-desc {
+  color: rgba(255,255,255,0.6);
+  margin: 0 auto 60px;
+  max-width: 700px;
+}
+.phil-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.phil-card {
+  padding: 50px 36px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  text-align: left;
+  transition: all 0.4s var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.phil-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(200,54,46,0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.phil-card:hover::before { opacity: 1; }
+.phil-card:hover {
+  border-color: rgba(200,54,46,0.3);
+  transform: translateY(-4px);
+}
+.phil-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(200,54,46,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 22px;
+}
+.phil-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.phil-card p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+}
+
+/* ========== FRANCHISE ========== */
+.franchise { background: var(--light-gray); }
+.franchise-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.franchise-features {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 40px;
+}
+.feature-item {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  background: #fff;
+  border-radius: 16px;
+  transition: all 0.3s var(--transition);
+}
+.feature-item:hover {
+  transform: translateX(8px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.feature-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.feature-text h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.feature-text p {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.6;
+}
+.franchise-visual {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+}
+.franchise-visual-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+  padding: 40px;
+}
+.franchise-big-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.franchise-big-label {
+  font-size: 18px;
+  font-weight: 300;
+  opacity: 0.8;
+  margin-bottom: 40px;
+}
+.franchise-award {
+  padding: 16px 32px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* ========== CONTACT / CTA ========== */
+.cta-section {
+  background: linear-gradient(135deg, #1a0a05, #3d1008);
+  color: #fff;
+  text-align: center;
+  padding: 140px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,168,124,0.1), transparent);
+}
+.cta-section .section-title { color: #fff; margin-bottom: 16px; }
+.cta-section .section-desc {
+  color: rgba(255,255,255,0.6);
+  margin: 0 auto 50px;
+  text-align: center;
+}
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.cta-btn {
+  padding: 18px 44px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: all 0.4s var(--transition);
+  cursor: pointer;
+  border: none;
+}
+.cta-btn.primary {
+  background: var(--primary);
+  color: #fff;
+}
+.cta-btn.primary:hover {
+  background: #fff;
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+.cta-btn.outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.cta-btn.outline:hover {
+  border-color: #fff;
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-2px);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  background: #0d0d0d;
+  color: rgba(255,255,255,0.4);
+  padding: 60px;
+}
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+}
+.footer-brand .nav-logo {
+  color: #fff;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+.footer-brand p {
+  font-size: 13px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+.footer-social a:hover {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #fff;
+}
+.footer-col h4 {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+.footer-col a {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 12px;
+  transition: color 0.3s;
+}
+.footer-col a:hover { color: var(--primary); }
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollLine {
+  0% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+  50% { transform: scaleY(0); transform-origin: top; }
+  51% { transform: scaleY(0); transform-origin: bottom; }
+  100% { opacity: 1; transform: scaleY(1); transform-origin: bottom; }
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s var(--transition);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .section { padding: 80px 40px; }
+  .nav { padding: 16px 30px; }
+  .nav.scrolled { padding: 12px 30px; }
+  .story-grid, .franchise-grid { grid-template-columns: 1fr; gap: 40px; }
+  .story-visual { max-height: 400px; aspect-ratio: 16/9; }
+  .phil-cards { grid-template-columns: 1fr; }
+  .bento { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(3, 250px); }
+  .bento-item:nth-child(1) { grid-column: span 2; }
+  .bento-item:nth-child(4) { grid-column: span 1; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .section { padding: 60px 20px; }
+  .nav { padding: 14px 20px; }
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    z-index: 999;
+  }
+  .nav-links.open a { color: #fff; font-size: 20px; }
+  .bento {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 220px);
+  }
+  .bento-item:nth-child(1),
+  .bento-item:nth-child(4) { grid-column: span 1; }
+  .story-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .stat-number { font-size: 28px; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+  .footer-inner { grid-template-columns: 1fr; gap: 30px; }
+  .footer-bottom { flex-direction: column; gap: 8px; }
+  .franchise-visual { aspect-ratio: 16/10; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">BUNTA</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#story">브랜드 스토리</a></li>
+    <li><a href="#menu">메뉴</a></li>
+    <li><a href="#philosophy">철학</a></li>
+    <li><a href="#franchise">가맹안내</a></li>
+    <li><a href="#contact">문의하기</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Since Vietnam &middot; Authentic Pho</div>
+    <h1 class="hero-title">BUNTA</h1>
+    <p class="hero-subtitle">베트남 3대 쌀국수 전문점</p>
+    <a href="#menu" class="hero-cta">
+      메뉴 보기
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+    </a>
+  </div>
+  <div class="hero-scroll">
+    SCROLL
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ========== BRAND STORY ========== -->
+<section class="section story" id="story">
+  <div class="story-grid">
+    <div class="story-visual reveal">
+      <div class="story-visual-inner">
+        <div class="story-visual-text">
+          "진정한 베트남의<br>맛을 담다"
+        </div>
+      </div>
+    </div>
+    <div class="story-content reveal">
+      <p class="section-label">Brand Story</p>
+      <h2 class="section-title">하노이 골목 그 깊은<br>한 그릇의 정성</h2>
+      <p class="section-desc">
+        분타는 베트남 3대 쌀국수를 대표하는 프랜차이즈로,
+        정통 베트남의 맛과 문화를 한국에 깊이 뿌리내린 곳입니다.
+        매일 매장에서 직접 우려낸 풍미 깊은 육수, 신선한 고기와 야채,
+        그리고 특제 소스가 어우러져 한 그릇에 담아내는 정성스러운 요리는
+        분타만의 자부심입니다.
+      </p>
+      <div class="story-stats">
+        <div>
+          <div class="stat-number">50+</div>
+          <div class="stat-label">전국 매장 수</div>
+        </div>
+        <div>
+          <div class="stat-number">12h</div>
+          <div class="stat-label">매일 우려낸 육수</div>
+        </div>
+        <div>
+          <div class="stat-number">2024</div>
+          <div class="stat-label">베스트브랜드 대상</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MENU BENTO ========== -->
+<section class="section menu" id="menu">
+  <div class="menu-header reveal">
+    <p class="section-label">Signature Menu</p>
+    <h2 class="section-title">분타가 선보이는<br>베트남의 한 상</h2>
+    <p class="section-desc">단순한 쌀국수를 넘어, 베트남의 대표 요리를 진정성 있게 선보입니다.</p>
+  </div>
+  <div class="bento reveal">
+    <!-- 1: 쌀국수 (큰 블록) -->
+    <div class="bento-item">
+      <div class="bento-bg"></div>
+      <div class="bento-overlay">
+        <span class="bento-tag">SIGNATURE</span>
+        <div class="bento-name">쌀국수 (Pho)</div>
+        <div class="bento-desc-text">12시간 정성으로 우려낸 깊은 육수와 쫄깃한 쌀면의 조화</div>
+      </div>
+    </div>
+    <!-- 2: 분짜 -->
+    <div class="bento-item">
+      <div class="bento-bg"></div>
+      <div class="bento-overlay">
+        <div class="bento-name">분짜 (Bun Cha)</div>
+        <div class="bento-desc-text">특제 소스에 구운 고기와 신선한 야채</div>
+      </div>
+    </div>
+    <!-- 3: 반쎄오 -->
+    <div class="bento-item">
+      <div class="bento-bg"></div>
+      <div class="bento-overlay">
+        <div class="bento-name">반쎄오 (Banh Xeo)</div>
+        <div class="bento-desc-text">바삭한 쌀전병 속 풍성한 속재료</div>
+      </div>
+    </div>
+    <!-- 4: 볶음밥 (큰 블록) -->
+    <div class="bento-item">
+      <div class="bento-bg"></div>
+      <div class="bento-overlay">
+        <span class="bento-tag">POPULAR</span>
+        <div class="bento-name">볶음밥 (Com Chien)</div>
+        <div class="bento-desc-text">고소한 웍향 가득한 베트남 스타일 볶음밥</div>
+      </div>
+    </div>
+    <!-- 5: 사이드 -->
+    <div class="bento-item">
+      <div class="bento-bg"></div>
+      <div class="bento-overlay">
+        <div class="bento-name">사이드 메뉴</div>
+        <div class="bento-desc-text">월남쌈, 스프링롤 등 다양한 사이드</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PHILOSOPHY ========== -->
+<section class="section philosophy" id="philosophy">
+  <p class="section-label reveal">Our Philosophy</p>
+  <h2 class="section-title reveal">분타가 지키는 세 가지 약속</h2>
+  <p class="section-desc reveal">우리는 맛 뿐만 아니라, 진정성과 신뢰를 함께 전합니다.</p>
+  <div class="phil-cards">
+    <div class="phil-card reveal">
+      <div class="phil-icon">&#x1F372;</div>
+      <h3>매일 신선한 육수</h3>
+      <p>매일 아침 매장에서 직접 우려내는 육수.
+         인공 조미료 없이 뼈와 향신료만으로 12시간 이상
+         정성을 들여 깊은 풍미를 완성합니다.</p>
+    </div>
+    <div class="phil-card reveal">
+      <div class="phil-icon">&#x1F331;</div>
+      <h3>엄선된 원재료</h3>
+      <p>베트남 현지에서 직수입한 쌀면과 향신료,
+         국내 최상급 신선 재료만을 사용하여
+         정통 베트남의 맛을 그대로 재현합니다.</p>
+    </div>
+    <div class="phil-card reveal">
+      <div class="phil-icon">&#x2764;</div>
+      <h3>정직한 한 그릇</h3>
+      <p>가격 대비 풍성한 양과 정직한 재료 구성.
+         고객이 매일 찾고 싶은 한 그릇을 만들기 위해
+         타협 없는 품질을 유지합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FRANCHISE ========== -->
+<section class="section franchise" id="franchise">
+  <div class="franchise-grid">
+    <div class="reveal">
+      <p class="section-label">Franchise</p>
+      <h2 class="section-title">분타와 함께<br>성공을 시작하세요</h2>
+      <p class="section-desc">
+        무분별한 확장이 아닌, 상권과 입지를 철저히 분석하여
+        가맹점주의 성공을 최우선으로 합니다.
+      </p>
+      <div class="franchise-features">
+        <div class="feature-item">
+          <div class="feature-num">01</div>
+          <div class="feature-text">
+            <h4>매출보증제</h4>
+            <p>목표 매출 달성 시까지 로열티 면제. 가맹점의 안정적 정착을 지원합니다.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">02</div>
+          <div class="feature-text">
+            <h4>체계적 교육</h4>
+            <p>오픈 전후 밀착 교육과 본사 슈퍼바이저의 지속적인 운영 지원.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-num">03</div>
+          <div class="feature-text">
+            <h4>상권 보호</h4>
+            <p>철저한 상권 분석과 영업 지역 보호로 기존 가맹점의 수익을 보장합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="franchise-visual reveal">
+      <div class="franchise-visual-content">
+        <div class="franchise-big-num">50+</div>
+        <div class="franchise-big-label">전국 가맹점</div>
+        <div class="franchise-award">
+          &#x1F3C6; 2024 한국소비자베스트브랜드 대상
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="cta-section" id="contact">
+  <p class="section-label reveal">Contact Us</p>
+  <h2 class="section-title reveal">가맹 상담 및 문의</h2>
+  <p class="section-desc reveal">
+    분타와 함께할 파트너를 기다립니다.<br>
+    아래 버튼을 통해 편하게 문의해주세요.
+  </p>
+  <div class="cta-buttons reveal">
+    <a href="https://www.bunta.co.kr/contactus" class="cta-btn primary" target="_blank">창업 문의하기</a>
+    <a href="https://www.bunta.co.kr/" class="cta-btn outline" target="_blank">공식 사이트 방문</a>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo">BUNTA</a>
+      <p>베트남 3대 쌀국수 전문점 분타.<br>정통 베트남의 맛을 한국에서 만나보세요.</p>
+      <div class="footer-social">
+        <a href="#" title="Instagram">IG</a>
+        <a href="#" title="YouTube">YT</a>
+        <a href="#" title="Blog">BL</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>메뉴</h4>
+      <a href="#">쌀국수</a>
+      <a href="#">분짜</a>
+      <a href="#">반쎄오</a>
+      <a href="#">볶음밥</a>
+      <a href="#">사이드</a>
+    </div>
+    <div class="footer-col">
+      <h4>브랜드</h4>
+      <a href="#">브랜드 스토리</a>
+      <a href="#">철학</a>
+      <a href="#">매장 찾기</a>
+      <a href="#">뉴스</a>
+    </div>
+    <div class="footer-col">
+      <h4>가맹</h4>
+      <a href="#">창업 안내</a>
+      <a href="#">창업 문의</a>
+      <a href="#">FAQ</a>
+      <a href="#">고객의 소리</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2024 BUNTA. All rights reserved.</span>
+    <span>개인정보처리방침 &middot; 이용약관</span>
+  </div>
+</footer>
+
+<!-- ========== SCRIPTS ========== -->
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// Mobile nav toggle
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('active'), i * 100);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+reveals.forEach(el => revealObserver.observe(el));
+
+// Smooth parallax on hero
+window.addEventListener('scroll', () => {
+  const hero = document.querySelector('.hero-content');
+  const scroll = window.scrollY;
+  if (scroll < window.innerHeight) {
+    hero.style.transform = `translateY(${scroll * 0.3}px)`;
+    hero.style.opacity = 1 - scroll / (window.innerHeight * 0.8);
+  }
+});
+</script>
+
+</body>
+</html>
