@@ -2,6 +2,8 @@
 
 분타(BUNTA) 공식 웹사이트 리디자인 프로젝트
 
+### [Live Demo](https://sangkyoungpark.github.io/Bunta/)
+
 ## 프로젝트 구조
 
 ```
